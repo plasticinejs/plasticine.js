@@ -1,5 +1,5 @@
 {
-    "data" : {
+    "data" : [{
         "object" : [{
             "property" : "Apple"
         }, {
@@ -11,11 +11,11 @@
                 "property" : "Broccoli"
             }
         }]
-    },
+    }],
     "template" : {
         "fruits" : "$.object[?(@.property)]"
     },
-    "result" : {
+    "result" : [{
         "fruits" : [{
             "property" : "Apple"
         }, {
@@ -23,5 +23,5 @@
         }, {
             "property" : "Mandarin"
         }]
-    }
+    }]
 }

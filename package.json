@@ -1,6 +1,6 @@
 {
     "name": "plasticine.js",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description" : "plasticine.js",
     "author" : {
         "name" : "Aleksey Novikov",
@@ -24,7 +24,7 @@
     },
     "main": "index.js",
     "scripts" : {
-        "test" : "npm run build && mocha -r babel-register",
+        "test" : "mocha -r babel-register",
         "watch" : "babel ./src/main.js -w -o ./index.js",
         "build" : "babel ./src/main.js -o ./index.js"
     }

@@ -1,5 +1,5 @@
 {
-    "data" : {
+    "data" : [{
         "object-0" : [{
             "property" : "Apple"
         }, {
@@ -12,15 +12,15 @@
             "property-1" : "Banana",
             "property-2" : "Mandarin"
         }
-    },
+    }],
     "template" : {
         "fruits-0" : "$['object-0'][(0)]",
         "fruits-1" : "$['object-1'][('property-0')]"
     },
-    "result" : {
+    "result" : [{
         "fruits-0" : {
             "property" : "Apple"
         },
         "fruits-1" : "Apple"
-    }
+    }]
 }

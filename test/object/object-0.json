@@ -5,13 +5,13 @@
         "property-2" : "Mandarin"
     },
     "template" : {
-        "fruits" : "*"
+        "fruits" : "$"
     },
     "result" : {
-        "fruits" : [
-            "Apple",
-            "Banana",
-            "Mandarin"
-        ]
+        "fruits" : {
+            "property-0" : "Apple",
+            "property-1" : "Banana",
+            "property-2" : "Mandarin"
+        }
     }
 }

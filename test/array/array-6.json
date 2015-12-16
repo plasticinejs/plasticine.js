@@ -1,18 +1,18 @@
 {
-    "data" : {
+    "data" : [{
         "object" : [
             "Apple",
             "Banana",
             "Mandarin"
         ]
-    },
+    }],
     "template" : {
         "fruits" : "$.object[0,1]"
     },
-    "result" : {
+    "result" : [{
         "fruits" : [
             "Apple",
             "Banana"
         ]
-    }
+    }]
 }

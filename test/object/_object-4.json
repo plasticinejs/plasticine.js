@@ -1,0 +1,25 @@
+{
+    "data" : {
+        "object" : {
+            "object-0" : {
+                "property" : "Apple"
+            },
+            "object-1" : {
+                "property" : "Banana"
+            },
+            "object-2" : {
+                "property" : "Mandarin"
+            }
+        }
+    },
+    "template" : {
+        "fruits" : "$.object..property"
+    },
+    "result" : {
+        "fruits" : [
+            "Apple",
+            "Banana",
+            "Mandarin"
+        ]
+    }
+}

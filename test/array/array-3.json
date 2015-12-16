@@ -1,17 +1,17 @@
 {
-    "data" : {
+    "data" : [{
         "property-0" : "Apple",
         "property-1" : "Banana",
         "property-2" : "Mandarin"
-    },
+    }],
     "template" : {
         "fruits" : "$.."
     },
-    "result" : {
+    "result" : [{
         "fruits" : {
             "property-0" : "Apple",
             "property-1" : "Banana",
             "property-2" : "Mandarin"
         }
-    }
+    }]
 }

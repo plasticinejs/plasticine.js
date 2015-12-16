@@ -1,52 +1,52 @@
 import Plasticine from './../index.js';
 import { assert } from 'chai';
 
-import objectTest0 from './object/object-0.json';
-import objectTest1 from './object/object-1.json';
-import objectTest2 from './object/object-2.json';
-import objectTest3 from './object/object-3.json';
-import objectTest4 from './object/object-4.json';
-import objectTest5 from './object/object-5.json';
-import objectTest6 from './object/object-6.json';
-import objectTest7 from './object/object-7.json';
-import objectTest8 from './object/object-8.json';
+import arrayTest0 from './array/array-0.json';
+import arrayTest1 from './array/array-1.json';
+import arrayTest2 from './array/array-2.json';
+import arrayTest3 from './array/array-3.json';
+import arrayTest4 from './array/array-4.json';
+import arrayTest5 from './array/array-5.json';
+import arrayTest6 from './array/array-6.json';
+import arrayTest7 from './array/array-7.json';
+import arrayTest8 from './array/array-8.json';
 
-describe('Object', () => {
+describe('Array', () => {
 
     it("Operator $", function() {
-        assert.deepEqual(new Plasticine(objectTest0.data, objectTest0.template), objectTest0.result);
+        assert.deepEqual(new Plasticine(arrayTest0.data, arrayTest0.template), arrayTest0.result);
     });
 
     it("Operator @", function() {
-        assert.deepEqual(new Plasticine(objectTest1.data, objectTest1.template), objectTest1.result);
+        assert.deepEqual(new Plasticine(arrayTest1.data, arrayTest1.template), arrayTest1.result);
     });
 
     it("Operator *", function() {
-        assert.deepEqual(new Plasticine(objectTest2.data, objectTest2.template), objectTest2.result);
+        assert.deepEqual(new Plasticine(arrayTest2.data, arrayTest2.template), arrayTest2.result);
     });
 
     it("Operator ..", function() {
-        assert.deepEqual(new Plasticine(objectTest3.data, objectTest3.template), objectTest3.result);
+        assert.deepEqual(new Plasticine(arrayTest3.data, arrayTest3.template), arrayTest3.result);
     });
 
     it("Operator .<name>", function() {
-        assert.deepEqual(new Plasticine(objectTest4.data, objectTest4.template), objectTest4.result);
+        assert.deepEqual(new Plasticine(arrayTest4.data, arrayTest4.template), arrayTest4.result);
     });
 
     it("Operator ['<name> (, <name>)']", function() {
-        assert.deepEqual(new Plasticine(objectTest5.data, objectTest5.template), objectTest5.result);
+        assert.deepEqual(new Plasticine(arrayTest5.data, arrayTest5.template), arrayTest5.result);
     });
 
     it("Operator [<number> (, <number>)]", function() {
-        assert.deepEqual(new Plasticine(objectTest6.data, objectTest6.template), objectTest6.result);
+        assert.deepEqual(new Plasticine(arrayTest6.data, arrayTest6.template), arrayTest6.result);
     });
 
     it("Operator [?(<expression>)]", function() {
-        assert.deepEqual(new Plasticine(objectTest7.data, objectTest7.template), objectTest7.result);
+        assert.deepEqual(new Plasticine(arrayTest7.data, arrayTest7.template), arrayTest7.result);
     });
 
     it("Operator [(<expression>)]", function() {
-        assert.deepEqual(new Plasticine(objectTest8.data, objectTest8.template), objectTest8.result);
+        assert.deepEqual(new Plasticine(arrayTest8.data, arrayTest8.template), arrayTest8.result);
     });
 
 });
