@@ -16,6 +16,7 @@
         "JSONPath" : "0.11.2"
     },
     "devDependencies" : {
+        "babel-register" : "6.3.13",
         "babel-cli" : "6.2.0",
         "babel-preset-es2015" : "6.1.18",
         "chai": "3.4.1",
