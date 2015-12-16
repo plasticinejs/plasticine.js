@@ -1,3 +1,1 @@
-# plasticinejs [![Travis Build Status][travis-img]][travis]
-[travis-img]:   https://travis-ci.org/plasticinejs/plasticine.js.svg
-[travis]:       https://travis-ci.org/plasticinejs/plasticine.js
+# plasticinejs [![Build Status](https://img.shields.io/travis/plasticinejs/plasticine.js/master.svg)](https://travis-ci.org/plasticinejs/plasticine.js) [![Dependency Status](https://img.shields.io/david/plasticinejs/plasticine.js.svg)](https://david-dm.org/plasticinejs/plasticine.js) [![devDependency Status](https://img.shields.io/david/dev/plasticinejs/plasticine.js.svg)](https://david-dm.org/plasticinejs/plasticine.js#info=devDependencies)
