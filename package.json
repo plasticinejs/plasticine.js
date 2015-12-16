@@ -24,7 +24,7 @@
     },
     "main": "index.js",
     "scripts" : {
-        "test" : "mocha -r babel-register",
+        "test" : "npm run build && mocha -r babel-register",
         "watch" : "babel ./src/main.js -w -o ./index.js",
         "build" : "babel ./src/main.js -o ./index.js"
     }
