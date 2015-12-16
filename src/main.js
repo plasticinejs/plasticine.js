@@ -1,3 +1,5 @@
+import JSONPath from 'JSONPath';
+
 class Plasticine {
     constructor(data, template = {}) {
         this.result = Array.isArray(data) ? [] : {};
@@ -18,7 +20,7 @@ class Plasticine {
         this[`_${this._type(template)}`](data, template, result, key);
     }
 
-    _type(data) {
+    _type(data, string = true) {
         let type = typeof data;
 
         if(type == 'object' && Array.isArray(data)) {
@@ -54,7 +56,7 @@ class Plasticine {
     _string(data, path, result, key) {
         let seek = JSONPath.eval(data, path) || [];
 
-        result[key] = seek.length ? seek[0] : null;
+        result[key] = seek.length ? seek.length > 1 ? seek : seek[0] : undefined;
     }
 
 }
