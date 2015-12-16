@@ -1,10 +1,21 @@
 language: node_js
-node_js:
-  - "0.10"
-  - "0.12"
-  - "1.8"
-  - "2.5"
-  - "3.3"
-  - "4.2"
 sudo: false
-script: "npm test"
+node_js:
+  - 0.12
+  - 4
+  - 5
+
+cache:
+  directories:
+    - node_modules
+
+script:
+  - npm test
+
+deploy:
+  provider: npm
+  email: lamo2k123@gmail.com
+  api_key: $NPM_API_KEY
+  on:
+    tags: true
+    repo: plasticinejs/plasticine.js
