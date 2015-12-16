@@ -20,3 +20,7 @@ deploy:
   on:
     tags: true
     repo: plasticinejs/plasticine.js
+
+branches:
+  only:
+    - master
