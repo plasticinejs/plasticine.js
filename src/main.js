@@ -54,9 +54,25 @@ class Plasticine {
     }
 
     _string(data, path, result, key) {
-        let seek = JSONPath.eval(data, path) || [];
+        if(typeof data != 'object') {
+            console.error('[_string] argument `data` is not object!');
+        }
 
-        result[key] = seek.length ? seek.length > 1 ? seek : seek[0] : undefined;
+        if(typeof path != 'string') {
+            console.error('[_string] argument `path` is not string!');
+        }
+
+        if(typeof result != 'object') {
+            console.error('[_string] argument `result` is not object!');
+        }
+
+        if(typeof key != 'string') {
+            console.error('[_string] argument `key` is not string!');
+        }
+
+        result[key] = JSONPath({
+            wrap : false
+        }, path, data);
     }
 
 }
