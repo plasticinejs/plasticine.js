@@ -1,2 +1,5 @@
 .idea
 node_modules
+logs
+*.log
+npm-debug.log*
