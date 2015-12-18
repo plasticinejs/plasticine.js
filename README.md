@@ -1,7 +1,9 @@
 # Plasticine.js
-[![Build Status](https://img.shields.io/travis/plasticinejs/plasticine.js/master.svg)](https://travis-ci.org/plasticinejs/plasticine.js)
-[![Dependency Status](https://img.shields.io/david/plasticinejs/plasticine.js.svg)](https://david-dm.org/plasticinejs/plasticine.js)
-[![devDependency Status](https://img.shields.io/david/dev/plasticinejs/plasticine.js.svg)](https://david-dm.org/plasticinejs/plasticine.js#info=devDependencies)
+[![Build Status](https://img.shields.io/travis/plasticinejs/plasticine.js/master.svg?style=flat-square)](https://travis-ci.org/plasticinejs/plasticine.js)
+[![Dependency Status](https://img.shields.io/david/plasticinejs/plasticine.js.svg?style=flat-square)](https://david-dm.org/plasticinejs/plasticine.js)
+[![devDependency Status](https://img.shields.io/david/dev/plasticinejs/plasticine.js.svg?style=flat-square)](https://david-dm.org/plasticinejs/plasticine.js#info=devDependencies)
+[![Latest Stable Version](https://img.shields.io/npm/v/plasticine.js.svg?style=flat-square)](https://www.npmjs.com/package/plasticine.js)
+[![NPM Downloads](https://img.shields.io/npm/dm/plasticine.js.svg?style=flat-square)](https://www.npmjs.com/package/plasticine.js)
 
 Homepage http://plasticinejs.github.io/plasticine.js/
 
