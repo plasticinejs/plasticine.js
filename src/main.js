@@ -1,6 +1,5 @@
-import JSONPath from 'JSONPath';
-
 class Plasticine {
+    
     constructor(data, template = {}) {
         this.result = Array.isArray(data) ? [] : {};
 
@@ -20,7 +19,7 @@ class Plasticine {
         this[`_${this._type(template)}`](data, template, result, key);
     }
 
-    _type(data, string = true) {
+    _type(data) {
         let type = typeof data;
 
         if(type == 'object' && Array.isArray(data)) {
@@ -54,27 +53,32 @@ class Plasticine {
     }
 
     _string(data, path, result, key) {
-        if(typeof data != 'object') {
-            console.error('[_string] argument `data` is not object!');
-        }
-
-        if(typeof path != 'string') {
-            console.error('[_string] argument `path` is not string!');
-        }
-
-        if(typeof result != 'object') {
-            console.error('[_string] argument `result` is not object!');
-        }
-
-        if(typeof key != 'string') {
-            console.error('[_string] argument `key` is not string!');
-        }
-
-        result[key] = JSONPath({
-            wrap : false
-        }, path, data);
+        result[key] = this._get(data, path);
     }
 
+    _get(source, template) {
+        if(Array.isArray(template)) {
+            let key = template.shift();
+
+            if(/\[[\w,\s]+\]/.test(key)) {
+                let keys    = key.match(/\[([\w,\s]+)\]/)[1].split(/,\s?/),
+                    result  = [];
+
+                for(let i in keys) {
+                    let value = this._get(source, keys[i]);
+
+                    value && result.push(value);
+                }
+
+                return result;
+            } else {
+                return template.length ? source[key] ? this._get(source[key], template) : undefined : source[key];
+            }
+        } else {
+            return this._get(source, template.split('.'));
+        }
+    }
+    
 }
 
 export default Plasticine;
