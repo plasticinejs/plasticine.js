@@ -1,84 +1,144 @@
 class Plasticine {
-    
-    constructor(data, template = {}) {
-        this.result = Array.isArray(data) ? [] : {};
 
-        if(Array.isArray(data)) {
-            for(let i in data) {
-                this.result[i] = {};
-                this._walk(data[i], template, this.result[i]);
-            }
-        } else {
-            this._walk(data, template, this.result);
-        }
+    constructor(source, template) {
+        this._store = {
+            root : null
+        };
 
-        return this.result;
+        return this._parser(source, template);
     }
 
-    _walk(data, template, result, key) {
-        this[`_${this._type(template)}`](data, template, result, key);
+    _parser(source, template) {
+        return this._templateParser(source, template);
+    }
+
+    _templateParser(source, template) {
+        let result = null;
+
+        switch(this._type(template)) {
+            case 'array':
+                result = template.map(key => this._templateParser(source, template[key]));
+                break;
+            case 'object':
+                result = {};
+
+                Object.keys(template).forEach(key => {
+                    result[key] = this._templateParser(source, template[key])
+                });
+                break;
+            case 'string':
+                let operators = template.split('.');
+
+                result = this._sourceParser(source, operators);
+                break;
+            default:
+                console.error('[Plasticine._templateParser] template type', this._type(template));
+        }
+
+        return result;
+    }
+
+    _sourceParser(source, operators) {
+        let result = null;
+
+        switch(this._type(source)) {
+            case 'array':
+                result = [];
+
+                //console.log('11', source);
+                for(let i in source) {
+                    if(source.hasOwnProperty(i)) {
+                        this._store.root = source[i];
+                        //console.log('22', i);
+                        console.log('HERE', this._sourceParser(source[i], operators));
+                        //result.push(this._sourceParser(source[i], operators));
+                    }
+                }
+                break;
+            case 'object':
+                if(this._store.root === null) {
+                    this._store.root = source;
+                }
+
+                result = this._get(source, operators);
+                break;
+        }
+
+        return result;
+    }
+
+    _deep(source, operators) {
+        let result = [];
+
+        switch(this._type(source)) {
+            case 'array':
+                for(let i in source) {
+                    if(source.hasOwnProperty(i)) {
+                        let _deep = this._deep(source[i], operators);
+
+                        if(_deep.length) {
+                            result = [].concat(result, _deep);
+                        }
+                    }
+                }
+                break;
+            case 'object':
+                let _get = this._get(source, operators.slice(0));
+
+                _get && result.push(_get);
+
+                Object.keys(source).forEach(key => {
+                    let _deep= this._deep(source[key], operators);
+
+                    if(_deep.length) {
+                        result = [].concat(result, _deep);
+                    }
+                });
+                break;
+        }
+
+        return result;
+    }
+
+    _get(source, operators) {
+        let operator= operators.shift(),
+            result  = null;
+
+        switch(operator) {
+            case '$':
+                result = this._store.root;
+                break;
+            case '*':
+                result = Object.keys(source).map(key => {
+                    return operators.length ? this._get(source[key], operators.splice(0)) : source[key];
+                });
+                operators = [];
+                break;
+            case '':
+                result = this._deep(source, operators.slice(0));
+                operators = [];
+                break;
+            default:
+                result = source[operator];
+        }
+
+        if(operators.length && result) {
+            result = this._get(result, operators);
+        }
+
+        return result;
     }
 
     _type(data) {
-        let type = typeof data;
+        let _type = typeof data;
 
-        if(type == 'object' && Array.isArray(data)) {
-            type = 'array';
+        if(_type == 'object' && Array.isArray(data)) {
+            _type = 'array';
         }
 
-        return type;
+        return _type;
     }
 
-    _array(data, template, result, key) {
-        if(key && !result[key]) {
-            result = result[key] = [];
-        }
-
-        for(let i in template) {
-            this._walk(data, template[i], result, i);
-        }
-    }
-
-    _object(data, template, result, key) {
-        if(key && !result[key]) {
-            result = result[key] = {};
-        }
-
-        let keys = Object.keys(template);
-
-        for(let i in keys) {
-            this._walk(data, template[keys[i]], result, keys[i])
-        }
-
-    }
-
-    _string(data, path, result, key) {
-        result[key] = this._get(data, path);
-    }
-
-    _get(source, template) {
-        if(Array.isArray(template)) {
-            let key = template.shift();
-
-            if(/\[[\w,\s]+\]/.test(key)) {
-                let keys    = key.match(/\[([\w,\s]+)\]/)[1].split(/,\s?/),
-                    result  = [];
-
-                for(let i in keys) {
-                    let value = this._get(source, keys[i]);
-
-                    value && result.push(value);
-                }
-
-                return result;
-            } else {
-                return template.length ? source[key] ? this._get(source[key], template) : undefined : source[key];
-            }
-        } else {
-            return this._get(source, template.split('.'));
-        }
-    }
-    
 }
 
 export default Plasticine;
