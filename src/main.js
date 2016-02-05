@@ -1,7 +1,7 @@
 class Plasticine {
 
     /**
-     * @param {Object} template
+     * @param {(Object|Array|String)} template
      * @returns {{transform: (function(this:Plasticine)), validation: (function(this:Plasticine))}}
      */
     constructor(template) {
@@ -17,8 +17,8 @@ class Plasticine {
     }
 
     /**
-     * @param {Object} source
-     * @returns {*}
+     * @param {(Object|Array|String)} source
+     * @returns {(Object|Array|String)}
      */
     transform(source) {
         return this._parser(source, this._store.template)
@@ -29,9 +29,9 @@ class Plasticine {
     }
 
     /**
-     * @param {Object} source
-     * @param {Object} template
-     * @returns {*}
+     * @param {(Object|Array|String)} source
+     * @param {(Object|Array|String)} template
+     * @returns {(Object|Array|String)}
      * @private
      */
     _parser(source, template) {
@@ -59,8 +59,8 @@ class Plasticine {
 
     /**
      * @param {Object} source
-     * @param {Object} template
-     * @returns {*}
+     * @param {(Object|Array|String)} template
+     * @returns {(Object|Array)}
      * @private
      */
     _templateParser(source, template) {
@@ -90,9 +90,9 @@ class Plasticine {
     }
 
     /**
-     * @param {Object} source
+     * @param {(Object|Array)} source
      * @param {Array} operators
-     * @returns {*}
+     * @returns {(Object|Array)}
      * @private
      */
     _sourceParser(source, operators) {
@@ -120,7 +120,7 @@ class Plasticine {
 
     /**
      *
-     * @param {Object} source
+     * @param {(Object|Array)} source
      * @param {Array} operators
      * @returns {Array}
      * @private
@@ -161,7 +161,7 @@ class Plasticine {
     /**
      * @param {Object} source
      * @param {Array} operators
-     * @returns {*}
+     * @returns {(Object|Array)}
      * @private
      */
     _get(source, operators) {
@@ -195,7 +195,7 @@ class Plasticine {
 
     /**
      * @param {*} data
-     * @returns {string}
+     * @returns {String}
      * @private
      */
     _type(data) {
