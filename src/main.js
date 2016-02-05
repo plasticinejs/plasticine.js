@@ -1,5 +1,9 @@
 class Plasticine {
 
+    /**
+     * @param {Object} template
+     * @returns {{transform: (function(this:Plasticine)), validation: (function(this:Plasticine))}}
+     */
     constructor(template) {
         this._store = {
             root    : null,
@@ -12,6 +16,10 @@ class Plasticine {
         };
     }
 
+    /**
+     * @param {Object} source
+     * @returns {*}
+     */
     transform(source) {
         return this._parser(source, this._store.template)
     }
@@ -20,6 +28,12 @@ class Plasticine {
         // @TODO:
     }
 
+    /**
+     * @param {Object} source
+     * @param {Object} template
+     * @returns {*}
+     * @private
+     */
     _parser(source, template) {
         let result = null;
         switch(this._type(source)) {
@@ -43,6 +57,12 @@ class Plasticine {
         return result;
     }
 
+    /**
+     * @param {Object} source
+     * @param {Object} template
+     * @returns {*}
+     * @private
+     */
     _templateParser(source, template) {
         let result = null;
 
@@ -69,6 +89,12 @@ class Plasticine {
         return result;
     }
 
+    /**
+     * @param {Object} source
+     * @param {Array} operators
+     * @returns {*}
+     * @private
+     */
     _sourceParser(source, operators) {
         let result = null;
 
@@ -92,6 +118,13 @@ class Plasticine {
         return result;
     }
 
+    /**
+     *
+     * @param {Object} source
+     * @param {Array} operators
+     * @returns {Array}
+     * @private
+     */
     _deep(source, operators) {
         let result = [];
 
@@ -125,6 +158,12 @@ class Plasticine {
         return result;
     }
 
+    /**
+     * @param {Object} source
+     * @param {Array} operators
+     * @returns {*}
+     * @private
+     */
     _get(source, operators) {
         let operator= operators.shift(),
             result  = null;
@@ -154,6 +193,11 @@ class Plasticine {
         return result;
     }
 
+    /**
+     * @param {*} data
+     * @returns {string}
+     * @private
+     */
     _type(data) {
         let _type = typeof data;
 
