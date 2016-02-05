@@ -7,12 +7,11 @@
 
 Homepage http://plasticinejs.github.io/plasticine.js/
 
-Here is a complete overview of the JSONPath syntax:
+Syntax:
 
 | Operator                  | Description                                                        |
 | :------------------------ | :----------------------------------------------------------------- |
-| `$`                       | Root node. Required as first character of path.                    |
-| `@`                       | Current node. Available in filters and expressions.                |
+| `$`                       | Root                                                               |
 | `*`                       | Wildcard. Available anywhere a name or numeric are required.       |
 | `..`                      | Deep wildcard. Available anywhere a name is required.              |
 | `.<name>`                 | Dot-notated child                                                  |

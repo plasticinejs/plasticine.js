@@ -5,7 +5,9 @@ export default {
     template : {
         root : '$.undefined'
     },
-    result : {
+    result : [{
         root : undefined
-    }
+    }, {
+        root : undefined
+    }]
 }

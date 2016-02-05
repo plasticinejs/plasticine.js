@@ -1,15 +1,46 @@
 class Plasticine {
 
-    constructor(source, template) {
+    constructor(template) {
         this._store = {
-            root : null
+            root    : null,
+            template: template
         };
 
-        return this._parser(source, template);
+        return {
+            transform : this.transform.bind(this),
+            validation: this.validation.bind(this)
+        };
+    }
+
+    transform(source) {
+        return this._parser(source, this._store.template)
+    }
+
+    validation() {
+        // @TODO:
     }
 
     _parser(source, template) {
-        return this._templateParser(source, template);
+        let result = null;
+        switch(this._type(source)) {
+            case 'array':
+                result = source.map(item => this._templateParser(item, template));
+                break;
+            case 'object':
+                result = this._templateParser(source, template);
+                break;
+            case 'string':
+                try {
+                    let json = JSON.parse(source);
+
+                    result = JSON.stringify(this._parser(json, template));
+                } catch (e) {
+                    console.error('[Plasticine._parser] source string is not JSON!');
+                }
+                break;
+        }
+
+        return result;
     }
 
     _templateParser(source, template) {
@@ -43,17 +74,11 @@ class Plasticine {
 
         switch(this._type(source)) {
             case 'array':
-                result = [];
+                result = source.map(item => {
+                    this._store.root = item;
 
-                //console.log('11', source);
-                for(let i in source) {
-                    if(source.hasOwnProperty(i)) {
-                        this._store.root = source[i];
-                        //console.log('22', i);
-                        console.log('HERE', this._sourceParser(source[i], operators));
-                        //result.push(this._sourceParser(source[i], operators));
-                    }
-                }
+                    return this._sourceParser(item, operators.slice(0));
+                });
                 break;
             case 'object':
                 if(this._store.root === null) {

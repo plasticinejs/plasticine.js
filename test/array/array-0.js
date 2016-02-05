@@ -5,8 +5,8 @@ export default {
     template : {
         root : '$'
     },
-    result : {
-        root : [{
+    result : [{
+        root : {
             store : {
                 book : [{
                     category: 'reference',
@@ -46,7 +46,9 @@ export default {
                     }
                 }
             }
-        }, {
+        }
+    }, {
+        root : {
             store : {
                 book : [{
                     category: 'reference',
@@ -86,6 +88,6 @@ export default {
                     }
                 }
             }
-        }]
-    }
+        }
+    }]
 }

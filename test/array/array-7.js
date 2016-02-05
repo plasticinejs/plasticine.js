@@ -5,7 +5,7 @@ export default {
     template : {
         root : '$..bicycle'
     },
-    result : {
+    result : [{
         root : [{
             color : 'red',
             price : 19.95
@@ -16,5 +16,16 @@ export default {
             color : 'blue',
             price : 10.99
         }]
-    }
+    }, {
+        root : [{
+            color : 'red',
+            price : 19.95
+        }, {
+            color : 'yellow',
+            price : 33.50
+        }, {
+            color : 'blue',
+            price : 10.99
+        }]
+    }]
 }

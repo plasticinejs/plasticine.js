@@ -11,13 +11,87 @@ import test6 from './array/array-6.js';
 import test7 from './array/array-7.js';
 
 describe('Array', () => {
-    console.log('UUUUUU', new Plasticine(test0.data, test0.template));
-    it('0. Selector `$`', () => assert.deepEqual(new Plasticine(test0.data, test0.template), test0.result));
-    //it('1. Selector `$.*`', () => assert.deepEqual(new Plasticine(test1.data, test1.template), test1.result));
-    //it('2. Selector `$.store.*`', () => assert.deepEqual(new Plasticine(test2.data, test2.template), test2.result));
-    //it('3. Selector `$.store.bicycle`', () => assert.deepEqual(new Plasticine(test3.data, test3.template), test3.result));
-    //it('4. Selector `$.undefined`', () => assert.deepEqual(new Plasticine(test4.data, test4.template), test4.result));
-    //it('5. Selector `$.undefined.undefined`', () => assert.deepEqual(new Plasticine(test5.data, test5.template), test5.result));
-    //it('6. Selector `$.*.bicycle`', () => assert.deepEqual(new Plasticine(test6.data, test6.template), test6.result));
-    //it('7. Selector `$..bicycle`', () => assert.deepEqual(new Plasticine(test7.data, test7.template), test7.result));
+    it('0. Selector `$`', () => {
+        let palsticine = new Plasticine(test0.template);
+
+        assert.deepEqual(palsticine.transform(test0.data), test0.result);
+    });
+    it('1. Selector `$.*`', () => {
+        let palsticine = new Plasticine(test1.template);
+
+        assert.deepEqual(palsticine.transform(test1.data), test1.result);
+    });
+    it('2. Selector `$.store.*`', () => {
+        let palsticine = new Plasticine(test2.template);
+
+        assert.deepEqual(palsticine.transform(test2.data), test2.result);
+    });
+    it('3. Selector `$.store.bicycle`', () => {
+        let palsticine = new Plasticine(test3.template);
+
+        assert.deepEqual(palsticine.transform(test3.data), test3.result);
+    });
+    it('4. Selector `$.undefined`', () => {
+        let palsticine = new Plasticine(test4.template);
+
+        assert.deepEqual(palsticine.transform(test4.data), test4.result);
+    });
+    it('5. Selector `$.undefined.undefined`', () => {
+        let palsticine = new Plasticine(test5.template);
+
+        assert.deepEqual(palsticine.transform(test5.data), test5.result);
+    });
+    it('6. Selector `$.*.bicycle`', () => {
+        let palsticine = new Plasticine(test6.template);
+
+        assert.deepEqual(palsticine.transform(test6.data), test6.result);
+    });
+    it('7. Selector `$..bicycle`', () => {
+        let palsticine = new Plasticine(test7.template);
+
+        assert.deepEqual(palsticine.transform(test7.data), test7.result);
+    });
+});
+
+describe('JSON string Array', () => {
+    it('0. Selector `$`', () => {
+        let palsticine = new Plasticine(test0.template);
+
+        assert.deepEqual(palsticine.transform(JSON.stringify(test0.data)), JSON.stringify(test0.result));
+    });
+    it('1. Selector `$.*`', () => {
+        let palsticine = new Plasticine(test1.template);
+
+        assert.deepEqual(palsticine.transform(JSON.stringify(test1.data)), JSON.stringify(test1.result));
+    });
+    it('2. Selector `$.store.*`', () => {
+        let palsticine = new Plasticine(test2.template);
+
+        assert.deepEqual(palsticine.transform(JSON.stringify(test2.data)), JSON.stringify(test2.result));
+    });
+    it('3. Selector `$.store.bicycle`', () => {
+        let palsticine = new Plasticine(test3.template);
+
+        assert.deepEqual(palsticine.transform(JSON.stringify(test3.data)), JSON.stringify(test3.result));
+    });
+    it('4. Selector `$.undefined`', () => {
+        let palsticine = new Plasticine(test4.template);
+
+        assert.deepEqual(palsticine.transform(JSON.stringify(test4.data)), JSON.stringify(test4.result));
+    });
+    it('5. Selector `$.undefined.undefined`', () => {
+        let palsticine = new Plasticine(test5.template);
+
+        assert.deepEqual(palsticine.transform(JSON.stringify(test5.data)), JSON.stringify(test5.result));
+    });
+    it('6. Selector `$.*.bicycle`', () => {
+        let palsticine = new Plasticine(test6.template);
+
+        assert.deepEqual(palsticine.transform(JSON.stringify(test6.data)), JSON.stringify(test6.result));
+    });
+    it('7. Selector `$..bicycle`', () => {
+        let palsticine = new Plasticine(test7.template);
+
+        assert.deepEqual(palsticine.transform(JSON.stringify(test7.data)), JSON.stringify(test7.result));
+    });
 });
