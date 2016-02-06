@@ -5,6 +5,11 @@ class Plasticine {
      * @returns {{transform: (function(this:Plasticine)), validation: (function(this:Plasticine))}}
      */
     constructor(template) {
+        this._regex = {
+            and : /&/,
+            or  : /\|/
+        };
+
         this._store = {
             root    : null,
             template: template
@@ -183,7 +188,31 @@ class Plasticine {
                 operators = [];
                 break;
             default:
-                result = source[operator];
+                if(this._regex.and.test(operator)) {
+                    let subOperators = operator.split('&');
+
+                    result = subOperators.map(key => {
+                        let aKey = [key];
+
+                        return this._get(source, operators.length ? aKey.concat(operators) : aKey);
+                    });
+                } else if(this._regex.or.test(operator)) {
+                    let subOperators = operator.split('|');
+
+                    for(let i in subOperators) {
+                        if(subOperators.hasOwnProperty(i)) {
+                            let aKey = [subOperators[i]],
+                                _get = this._get(source, operators.length ? aKey.concat(operators) : aKey);
+
+                            if(_get) {
+                                result = _get;
+                                break;
+                            }
+                        }
+                    }
+                } else {
+                    result = source[operator];
+                }
         }
 
         if(operators.length && result) {
