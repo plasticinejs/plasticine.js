@@ -11,6 +11,8 @@ import test6 from './object/object-6.js';
 import test7 from './object/object-7.js';
 import test8 from './object/object-8.js';
 import test9 from './object/object-9.js';
+import test10 from './object/object-10.js';
+import test11 from './object/object-11.js';
 
 describe('Object', () => {
     it('0. Selector `$`', () => {
@@ -62,6 +64,16 @@ describe('Object', () => {
         let palsticine = new Plasticine(test9.template);
 
         assert.deepEqual(palsticine.transform(test9.data), test9.result);
+    });
+    it('10. Selector `$.store.bicycle.(color&price&undefined)`', () => {
+        let palsticine = new Plasticine(test10.template);
+
+        assert.deepEqual(palsticine.transform(test10.data), test10.result);
+    });
+    it('11. Selector `$.store.bicycle.(color|price|undefined)`', () => {
+        let palsticine = new Plasticine(test11.template);
+
+        assert.deepEqual(palsticine.transform(test11.data), test11.result);
     });
 });
 
@@ -115,5 +127,15 @@ describe('JSON string Object', () => {
         let palsticine = new Plasticine(test9.template);
 
         assert.deepEqual(palsticine.transform(JSON.stringify(test9.data)), JSON.stringify(test9.result));
+    });
+    it('10. Selector `$.store.bicycle.(color&price&undefined)`', () => {
+        let palsticine = new Plasticine(test10.template);
+
+        assert.deepEqual(palsticine.transform(JSON.stringify(test10.data)), JSON.stringify(test10.result));
+    });
+    it('11. Selector `$.store.bicycle.(color|price|undefined)`', () => {
+        let palsticine = new Plasticine(test11.template);
+
+        assert.deepEqual(palsticine.transform(JSON.stringify(test11.data)), JSON.stringify(test11.result));
     });
 });
