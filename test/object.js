@@ -53,12 +53,12 @@ describe('Object', () => {
 
         assert.deepEqual(palsticine.transform(test7.data), test7.result);
     });
-    it('8. Selector `$.store.bicycle.color&price`', () => {
+    it('8. Selector `$.store.bicycle.(color&price)`', () => {
         let palsticine = new Plasticine(test8.template);
 
         assert.deepEqual(palsticine.transform(test8.data), test8.result);
     });
-    it('9. Selector `$.store.bicycle.color|price`', () => {
+    it('9. Selector `$.store.bicycle.(color|price)`', () => {
         let palsticine = new Plasticine(test9.template);
 
         assert.deepEqual(palsticine.transform(test9.data), test9.result);
@@ -106,12 +106,12 @@ describe('JSON string Object', () => {
 
         assert.deepEqual(palsticine.transform(JSON.stringify(test7.data)), JSON.stringify(test7.result));
     });
-    it('8. Selector `$.store.bicycle.color&price`', () => {
+    it('8. Selector `$.store.bicycle.(color&price)`', () => {
         let palsticine = new Plasticine(test8.template);
 
         assert.deepEqual(palsticine.transform(JSON.stringify(test8.data)), JSON.stringify(test8.result));
     });
-    it('9. Selector `$.store.bicycle.color|price`', () => {
+    it('9. Selector `$.store.bicycle.(color|price)`', () => {
         let palsticine = new Plasticine(test9.template);
 
         assert.deepEqual(palsticine.transform(JSON.stringify(test9.data)), JSON.stringify(test9.result));

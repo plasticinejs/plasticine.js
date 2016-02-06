@@ -6,8 +6,8 @@ class Plasticine {
      */
     constructor(template) {
         this._regex = {
-            and : /&/,
-            or  : /\|/
+            and : /\(([\w-]+)&([\w-]+)\)/,
+            or  : /\(([\w-]+)\|([\w-]+)\)/
         };
 
         this._store = {
@@ -189,7 +189,7 @@ class Plasticine {
                 break;
             default:
                 if(this._regex.and.test(operator)) {
-                    let subOperators = operator.split('&');
+                    let subOperators = operator.match(this._regex.and).slice(1);
 
                     result = subOperators.map(key => {
                         let aKey = [key];
@@ -197,7 +197,7 @@ class Plasticine {
                         return this._get(source, operators.length ? aKey.concat(operators) : aKey);
                     });
                 } else if(this._regex.or.test(operator)) {
-                    let subOperators = operator.split('|');
+                    let subOperators = operator.match(this._regex.or).slice(1);
 
                     for(let i in subOperators) {
                         if(subOperators.hasOwnProperty(i)) {
