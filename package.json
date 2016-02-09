@@ -1,13 +1,13 @@
 {
     "name": "plasticine.js",
-    "version": "2.0.0",
-    "description" : "no description",
+    "version": "2.1.0",
+    "description" : "Transform javascript object",
     "keywords" : [
         "plasticine",
         "plasticine.js",
         "object transform",
         "json transform",
-        "json path",
+        "array transform",
         "transform"
     ],
     "homepage" : "http://plasticinejs.github.io/plasticine.js/",
@@ -21,11 +21,6 @@
         "email" : "lamo2k123@gmail.com"
     },
     "contributors" : [],
-    "files": [
-        ".babelrc",
-        "index.js",
-        "src/"
-    ],
     "main": "index.js",
     "repository" : "plasticinejs/plasticine.js",
     "scripts" : {
@@ -34,9 +29,9 @@
         "build" : "babel ./src/main.js -o ./index.js"
     },
     "devDependencies" : {
-        "babel-register" : "6.4.3",
-        "babel-cli" : "6.4.5",
-        "babel-preset-es2015" : "6.3.13",
+        "babel-register" : "6.5.1",
+        "babel-cli" : "6.5.1",
+        "babel-preset-es2015" : "6.5.0",
         "chai": "3.5.0",
         "mocha": "2.4.5"
     }

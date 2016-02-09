@@ -5,17 +5,38 @@
 [![Latest Stable Version](https://img.shields.io/npm/v/plasticine.js.svg?style=flat-square)](https://www.npmjs.com/package/plasticine.js)
 [![NPM Downloads](https://img.shields.io/npm/dm/plasticine.js.svg?style=flat-square)](https://www.npmjs.com/package/plasticine.js)
 
-Homepage http://plasticinejs.github.io/plasticine.js/
+## Installation
+```bash
+$ npm install plasticine.js
+```
+or
+```bash
+$ npm i plasticine.js
+```
 
 Syntax:
-
 | Operator                  | Description                                                        |
 | :------------------------ | :----------------------------------------------------------------- |
 | `$`                       | Root                                                               |
 | `*`                       | Wildcard. Available anywhere a name or numeric are required.       |
 | `..`                      | Deep wildcard. Available anywhere a name is required.              |
 | `.<name>`                 | Dot-notated child                                                  |
-| `['<name> (, <name>)']`   | Bracket-notated child or children                                  |
+| `['<name> (, <name>)']`   | Selecting multiple children                                        |
 | `[<number> (, <number>)]` | Indexed child or children                                          |
 | `[?(<expression>)]`       | Filter expression. Expression must evaluate to a boolean value.    |
 | `[(<expression>)]`        | Expression. Expression must evaluate to a string or numeric value. |
+
+## Docs & Community
+
+  * [Website and Documentation](http://plasticinejs.github.io/plasticine.js/)
+  * [Github Organization](https://github.com/plasticinejs)
+
+## Tests
+To run the test suite, first install the dependencies, then run `npm test`:
+```bash
+$ npm install
+$ npm test
+```
+
+## License
+[MIT](LICENSE)
