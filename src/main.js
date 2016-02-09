@@ -13,7 +13,7 @@ class Plasticine {
 
         this._store = {
             root    : null,
-            template: template
+            template: this._templatePreparation(template)
         };
 
         return {
@@ -58,6 +58,28 @@ class Plasticine {
                     console.error('[Plasticine._parser] source string is not JSON!');
                 }
                 break;
+        }
+
+        return result;
+    }
+
+    _templatePreparation(template) {
+        let result = null;
+
+        switch(this._type(template)) {
+            case 'array':
+            case 'object':
+                result = template;
+                break;
+            case 'string':
+                try {
+                    result = JSON.parse(template);
+                } catch (e) {
+                    console.error('[Plasticine._templatePreparation] template string is not JSON!');
+                }
+                break;
+            default:
+                console.error('[Plasticine._templatePreparation] template type', this._type(template));
         }
 
         return result;
