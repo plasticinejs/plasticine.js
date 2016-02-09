@@ -39,4 +39,4 @@ $ npm test
 ```
 
 ## License
-[MIT](LICENSE)
+[MIT](LICENSE.md)
