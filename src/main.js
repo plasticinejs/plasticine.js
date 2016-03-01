@@ -42,9 +42,14 @@ class Plasticine {
      */
     _parser(source, template) {
         let result = null;
+
         switch(this._type(source)) {
             case 'array':
-                result = source.map(item => this._templateParser(item, template));
+                result = new Array(source.length);
+
+                for(let i in source) {
+                    result[i] = this._templateParser(source[i], template);
+                }
                 break;
             case 'object':
                 result = this._templateParser(source, template);
@@ -101,9 +106,11 @@ class Plasticine {
             case 'object':
                 result = {};
 
-                Object.keys(template).forEach(key => {
-                    result[key] = this._templateParser(source, template[key])
-                });
+                let keys = Object.keys(template);
+
+                for(let i in keys) {
+                    result[keys[i]] = this._templateParser(source, template[keys[i]])
+                }
                 break;
             case 'string':
                 let operators = template.split('.');
@@ -177,7 +184,7 @@ class Plasticine {
                     let _deep= this._deep(source[key], operators);
 
                     if(_deep.length) {
-                        result = [].concat(result, _deep);
+                        result = result.concat(_deep);
                     }
                 });
                 break;
@@ -201,9 +208,8 @@ class Plasticine {
                 result = this._store.root;
                 break;
             case '*':
-                result = Object.keys(source).map(key => {
-                    return operators.length ? this._get(source[key], operators.splice(0)) : source[key];
-                });
+                result = Object.keys(source).map(key => operators.length ? this._get(source[key], operators.splice(0)) : source[key]);
+
                 operators = [];
                 break;
             case '':

@@ -12,6 +12,7 @@ cache:
 script:
   - npm test
   - npm run build
+  - npm run uglify
 
 deploy:
   provider: npm
