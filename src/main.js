@@ -101,7 +101,7 @@ class Plasticine {
 
         switch(this._type(template)) {
             case 'array':
-                result = template.map(key => this._templateParser(source, template[key]));
+                result = template.map((key, index) => this._templateParser(source, template[index]));
                 break;
             case 'object':
                 result = {};
