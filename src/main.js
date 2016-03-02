@@ -12,7 +12,6 @@ class Plasticine {
         };
 
         this._store = {
-            root    : null,
             template: this._templatePreparation(template)
         };
 
@@ -27,6 +26,8 @@ class Plasticine {
      * @returns {(Object|Array|String)}
      */
     transform(source) {
+        this._store.root = null;
+        
         return this._parser(source, this._store.template)
     }
 
