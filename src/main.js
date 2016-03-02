@@ -244,7 +244,7 @@ class Plasticine {
                 }
         }
 
-        if(operators.length && result) {
+        if(operators.length  && result != undefined) {
             result = this._get(result, operators);
         }
 
