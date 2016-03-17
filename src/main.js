@@ -137,15 +137,11 @@ class Plasticine {
         switch(this._type(source)) {
             case 'array':
                 result = source.map(item => {
-                    this._store.root = item;
-
                     return this._sourceParser(item, operators.slice(0));
                 });
                 break;
             case 'object':
-                if(this._store.root === null) {
-                    this._store.root = source;
-                }
+                this._store.root = source;
 
                 result = this._get(source, operators);
                 break;
