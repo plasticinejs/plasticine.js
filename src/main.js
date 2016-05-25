@@ -49,7 +49,9 @@ class Plasticine {
                 result = new Array(source.length);
 
                 for(let i in source) {
-                    result[i] = this._templateParser(source[i], template);
+                    if(source.hasOwnProperty(i)) {
+                        result[i] = this._templateParser(source[i], template);
+                    }
                 }
                 break;
             case 'object':
@@ -110,7 +112,9 @@ class Plasticine {
                 let keys = Object.keys(template);
 
                 for(let i in keys) {
-                    result[keys[i]] = this._templateParser(source, template[keys[i]])
+                    if(keys.hasOwnProperty(i)) {
+                        result[keys[i]] = this._templateParser(source, template[keys[i]])
+                    }
                 }
                 break;
             case 'string':
